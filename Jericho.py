@@ -25,11 +25,6 @@ def print_char(input_string):
         time.sleep(0.025)
         print(char, end='', flush=True)
 
-def breakdown():
-    print_char(jericho_symbol + "What?")
-    
-        
-
 # Start of program
 def intro():
 
