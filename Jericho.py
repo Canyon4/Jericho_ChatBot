@@ -25,12 +25,17 @@ def print_char(input_string):
         time.sleep(0.025)
         print(char, end='', flush=True)
 
+def breakdown():
+    print_char(jericho_symbol + "What?")
+    
+        
+
 # Start of program
 def intro():
 
     print_char(jericho_symbol +"Hello, I am Jericho. What is your name?")
 
-    print_char(jericho_symbol + "Good to meet you, " + name())
+    print_char(jericho_symbol + "Good to meet you, " + name() + "! ")
 # Grabs users name
 def name():
     greeting = input("\n" + "User> ")
@@ -43,6 +48,14 @@ def name():
         user_name = sentence[sentence.index("am") + 1]
     elif len(sentence) == 1:
         user_name = sentence[0]
+    else:
+        for i in range(0,len(sentence)):
+            if i != len(sentence) - 1:
+                sentence[i][0:1].upper()
+                user_name = user_name + sentence[i] + " "
+            else:
+                sentence[i][0:1].upper()
+                user_name = user_name + sentence[i]
     if "." in user_name:
         user_name = user_name[0:1].upper() + user_name[1:-1]
     else:
@@ -55,6 +68,10 @@ def name():
 def directory(inp):
     if(inp[0] == "do" or inp[0] == "are" or inp[0] == "what" or inp[0] == "how" or inp[0] == "when" or inp[0] == "who" or inp[0] == "why"):
         question(inp)
+    elif(inp[0] == "nothing" or inp[0] == "bye" or inp[0] == "goodbye"):
+        print_char(jericho_symbol + "Alright, have a good day!")
+        time.sleep(1)
+        quit()
 # Determines how to respond to a question by checking starting word and other specific words
 def question(ques):
     # Checks if starter word is "do"
@@ -126,6 +143,7 @@ def question(ques):
     # Returns "why" response
     else:
         print_char(jericho_symbol + "I don't know, look it up.")
+
 # Main function
 def main():
     intro()
